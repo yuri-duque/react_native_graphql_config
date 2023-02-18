@@ -1,14 +1,11 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client";
 import HomeScreen from "./src/screens/Home";
+import { createClient } from "./src/graphql/apollo-client";
 
 export default function App() {
   // Initialize Apollo Client
-  const client = new ApolloClient({
-    uri: "https://countries.trevorblades.com/graphql",
-    cache: new InMemoryCache(),
-  });
+  const client = createClient();
 
   return (
     <ApolloProvider client={client}>
